@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 const addNumbers = (number1, number2) => {
   var num1 = parseInt(number1);
   var num2 = parseInt(number2);
@@ -10,7 +14,7 @@ const addNumbers = (number1, number2) => {
 };
 
 app.get("/", (req, res) => {
-  res.redirect("/addTwoNumbers");
+  res.render("index.html");
 });
 
 app.get("/addTwoNumbers", (req, res) => {
